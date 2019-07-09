@@ -1,5 +1,22 @@
-<div class="login">
-    <p>Remember Me.</p>
-    <p>Você esqueceu algo?</p>
-    
+<div class="container content">
+    <div class="row">
+        <div class="col-12">
+            <h1>Remember Me.</h1>
+        </div>
+        <div class="col-12">
+            <form [formGroup]="loginForm">
+                <div class="row">
+                    <div class="col-12">
+                            <input type="text" formControlName="userInput" placeholder="Usuário" class="form-under">
+                    </div>
+                    <div class="col-12">
+                        <input type="text" formControlName="passInput" placeholder="Senha" class="form-under someSpace">
+                    </div>
+                    <div class="col-12">
+                        <button (click)="navigate()" class="someSpaceButton">Espere =/</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

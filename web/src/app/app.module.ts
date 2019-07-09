@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Import modules created
+import { LoginModule } from './modules/login/login.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+
 // Import firebase
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
@@ -21,6 +25,8 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     BrowserModule,
+    LoginModule,
+    DashboardModule,
     AppRoutingModule
   ],
   providers: [],
