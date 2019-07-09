@@ -11,11 +11,21 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private fb: FormBuilder) { }
 
+  loginForm = this.fb.group({
+    userInput : [''],
+    passInput : ['']
+  });
+
   ngOnInit() {
   }
 
   navigate() {
-    this.router.navigate(['/dashboard']);
+    if (this.loginForm.get('userInput').value === 'daniel' && this.loginForm.get('passInput').value === '123') {
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.loginForm.reset();
+      alert('Usuário incorreto');
+    }
   }
 
 }

@@ -1,16 +1,16 @@
 <div class="container content">
     <div class="row">
-        <div class="col-12">
+        <div class="col-lg-12">
             <h1>Remember Me.</h1>
         </div>
-        <div class="col-12">
+        <div class="col-lg-12">
             <form [formGroup]="loginForm">
                 <div class="row">
                     <div class="col-12">
                             <input type="text" formControlName="userInput" placeholder="Usuário" class="form-under">
                     </div>
                     <div class="col-12">
-                        <input type="text" formControlName="passInput" placeholder="Senha" class="form-under someSpace">
+                        <input type="password" formControlName="passInput" placeholder="Senha" class="form-under someSpace">
                     </div>
                     <div class="col-12">
                         <button (click)="navigate()" class="someSpaceButton">Espere =/</button>
