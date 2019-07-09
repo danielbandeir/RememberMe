@@ -12,13 +12,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     NotFoundComponent
   ],
   imports: [
