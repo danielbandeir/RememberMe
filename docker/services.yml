@@ -11,7 +11,7 @@ services:
       - POSTGRES_USER=remember
       - POSTGRES_PASSWORD=remember
     ports:
-      - 5433:5433
+      - "5440:5432"
 
   # eureka:
   #   hostname: eureka
