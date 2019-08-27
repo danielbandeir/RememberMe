@@ -1,2 +1,7 @@
 # RememberMe
-A project web/mobile to remember me
+
+Uma aplicação voltada para a criação de memórias, ajudando a desenvolver a memória para lembrar coisas muitas vezes superfluas.
+
+
+
+        

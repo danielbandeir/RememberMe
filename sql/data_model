@@ -1,0 +1,53 @@
+user - id
+       first_name
+       last_name
+       gender
+       birthday_date
+       email
+       password
+       registered_date
+       last_login
+       activate
+       banned
+
+banned - id
+         banned_name
+         banned_description
+         banned_begin
+         banned_end
+
+user_banned - id_user
+              id_banned
+
+
+notes - id
+        name_note
+        description_note
+        registered_date
+        started_date
+        finish_date
+        activate
+
+user_notes - id_user
+             id_notes
+
+shows - id
+        registered_date
+        show_image
+        show_name
+        show_description
+        episodes
+        season
+
+user_shows - id_user
+             id_shows
+
+books - id
+        registered_date
+        book_name
+        book_image
+        book_description
+        book_date
+
+user_books - id_user
+             id_books

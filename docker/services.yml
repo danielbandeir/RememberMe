@@ -1,0 +1,70 @@
+version: '3.4'
+services:
+  stayon-postgresql:
+    restart: always
+    container_name: stayon-postgresql
+    image: postgres:11.2
+    #    volumes:
+    #      - ~/volumes/stayon/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=rememberme
+      - POSTGRES_USER=remember
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5433:5433
+
+  eureka:
+    hostname: eureka
+    restart: always
+    container_name: eureka
+    image: springio/eureka
+    ports:
+      - 8761:8761
+
+  zookeeper:
+    restart: always
+    container_name: zookeeper
+    image: wurstmeister/zookeeper:3.4.6
+    ports:
+      - 2181:2181
+
+  kafka:
+    depends_on:
+      - zookeeper
+    hostname: kafka
+    restart: always
+    container_name: kafka
+    image: wurstmeister/kafka:2.11-2.0.1
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_CREATE_TOPICS: 'sendGes:1:1'
+    ports:
+      - 9092:9092
+
+  # nginx:
+  #   depends_on:
+  #     - stayon-postgresql
+  #     - gateway
+  #   hostname: nginx
+  #   restart: always
+  #   container_name: nginx
+  #   image: nginx
+  #   ports:
+  #     - 9000:9000
+
+  # gateway:
+  #   depends_on:
+  #     - zookeeper
+  #     - kafka
+  #     - stayon-postgresql
+  #   restart: always
+  #   container_name: gateway
+  #   image: springio/gateway
+  #   ports:
+  #     - 8080:8080
+  #   environment:
+  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://stayon-postgresql:5432/stayon
+  #     - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka
+  #     - SPRING_PROFILES_ACTIVE=prod
