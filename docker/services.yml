@@ -1,47 +1,32 @@
 version: '3.4'
 services:
-  stayon-postgresql:
+  rememberme-postgresql:
     restart: always
-    container_name: stayon-postgresql
+    container_name: rememberme-postgresql
     image: postgres:11.2
     #    volumes:
     #      - ~/volumes/stayon/postgresql/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=rememberme
       - POSTGRES_USER=remember
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=remember
     ports:
       - 5433:5433
 
-  eureka:
-    hostname: eureka
-    restart: always
-    container_name: eureka
-    image: springio/eureka
-    ports:
-      - 8761:8761
+  # eureka:
+  #   hostname: eureka
+  #   restart: always
+  #   container_name: eureka
+  #   image: springio/eureka
+  #   ports:
+  #     - 8761:8761
 
-  zookeeper:
+  rabbitmq:
     restart: always
-    container_name: zookeeper
-    image: wurstmeister/zookeeper:3.4.6
+    container_name: rabbitmq
+    image: rabbitmq:3.7.17-alpine
     ports:
-      - 2181:2181
-
-  kafka:
-    depends_on:
-      - zookeeper
-    hostname: kafka
-    restart: always
-    container_name: kafka
-    image: wurstmeister/kafka:2.11-2.0.1
-    environment:
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_CREATE_TOPICS: 'sendGes:1:1'
-    ports:
-      - 9092:9092
+      - 9093:9093
 
   # nginx:
   #   depends_on:
